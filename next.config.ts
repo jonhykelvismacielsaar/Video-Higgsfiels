@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
   /* The renderer shells out to a prebuilt binary that resolves its own path at
      runtime; bundling it would break that lookup. */
   serverExternalPackages: ["@ffmpeg-installer/ffmpeg"],
+  /* The studio is previewed through a proxy host, so dev-mode asset requests
+     arrive from an origin the default allow-list would refuse. */
+  allowedDevOrigins: ["*.e2b.app"],
   experimental: {
     /* Server actions compare Origin to Host. Behind a preview proxy the two
        differ, and the default allow-list would reject every generate. */
